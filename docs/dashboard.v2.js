@@ -1,3 +1,5 @@
+const APP_VERSION = '2026.03.11-v2';
+
 const DATASETS = {
   baseline: {
     name: 'База (текущий месяц)',
@@ -69,12 +71,12 @@ const deptFilter = document.getElementById('departmentFilter');
 const scenarioRange = document.getElementById('scenarioRange');
 const scenarioLabel = document.getElementById('scenarioLabel');
 const resetBtn = document.getElementById('resetBtn');
+const versionNode = document.getElementById('appVersion');
 
 function rag(score) { if (score >= 95) return { cls: 'green', text: 'GREEN' }; if (score >= 85) return { cls: 'yellow', text: 'YELLOW' }; return { cls: 'red', text: 'RED' }; }
 function ringColor(score) { if (score >= 95) return '#2ed087'; if (score >= 85) return '#ffb84d'; return '#ff5f7a'; }
 function seededNoise(name) { return [...name].reduce((s, c) => s + c.charCodeAt(0), 0) % 7; }
 function applyScenario(value, factor, key) { return Math.round((value * factor + seededNoise(key) / 10) * 10) / 10; }
-
 function currentDataset() { return DATASETS[datasetSelect.value] || DATASETS.baseline; }
 
 function collectState() {
@@ -104,10 +106,10 @@ function render() {
   const departmentAvg = (departments.reduce((s, d) => s + d.score, 0) / departments.length).toFixed(1);
 
   document.getElementById('summaryCards').innerHTML = [
+    { label: 'Версия визуала', value: APP_VERSION, delta: 'если видите другое — открыт старый кэш' },
     { label: 'Набор данных', value: source.name, delta: 'выпадающий список' },
     { label: 'KPI сотрудников', value: `${employeeAvg}%`, delta: selectedDept },
-    { label: 'KPI отделов', value: `${departmentAvg}%`, delta: `сценарий ${Math.round(factor * 100)}%` },
-    { label: 'Индекс дашборда завода', value: `${plantScore}%`, delta: 'пересчет online' }
+    { label: 'Индекс дашборда завода', value: `${plantScore}%`, delta: `отделы: ${departmentAvg}%` }
   ].map((c) => `<article class="card"><div class="label">${c.label}</div><div class="value">${c.value}</div><div class="delta">${c.delta}</div></article>`).join('');
 
   document.getElementById('employeeBars').innerHTML = [...employees].sort((a, b) => b.fact - a.fact).map((e) => `<div class="bar-item"><div class="bar-head"><span>${e.name}</span><strong>${e.fact}%</strong></div><div class="track"><div class="fill" style="width:${Math.min(e.fact, 100)}%"></div></div></div>`).join('');
@@ -131,6 +133,8 @@ function render() {
   document.getElementById('metricChips').innerHTML = metrics
     .map((m) => `<div class="chip"><div class="code">${m.code} · ${m.direction}</div><div class="name">${m.name}</div><div class="meta">Факт: ${m.value} · Цель: ${m.target}</div></div>`)
     .join('');
+
+  if (versionNode) versionNode.textContent = `Build: ${APP_VERSION}`;
 }
 
 function initControls() {

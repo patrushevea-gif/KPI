@@ -75,3 +75,9 @@ th { color: var(--muted); font-weight: 600; }
   .card-grid { grid-template-columns: 1fr 1fr; }
   .layout-two { grid-template-columns: 1fr; }
 }
+
+.version-note {
+  margin-top: 8px;
+  color: #8fb3ff;
+  font-size: 12px;
+}
