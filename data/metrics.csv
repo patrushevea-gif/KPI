@@ -1,0 +1,21 @@
+metric_code,metric_name,value,target,period,source,aggregation_type,direction,weight
+0001,"Закрытие задач в срок, %",92,95,month,manual,sum,higher_is_better,1
+0002,"Просроченные задачи, %",14,10,month,manual,sum,lower_is_better,1
+0003,"Аварийность (случаев/мес)",3,2,month,manual,sum,lower_is_better,1
+0004,"Выполнение ППР, %",88,90,month,manual,sum,higher_is_better,1
+0005,"Выполнение производственного плана, %",101,100,month,manual,sum,higher_is_better,1
+0006,"Уровень брака, %",1.8,1.5,month,manual,sum,lower_is_better,1
+0007,Метрика 7,0,100,month,manual,sum,higher_is_better,1
+0008,Метрика 8,0,100,month,manual,sum,higher_is_better,1
+0009,Метрика 9,0,100,month,manual,sum,higher_is_better,1
+0010,Метрика 10,0,100,month,manual,sum,higher_is_better,1
+0011,Метрика 11,0,100,month,manual,sum,higher_is_better,1
+0012,Метрика 12,0,100,month,manual,sum,higher_is_better,1
+0013,Метрика 13,0,100,month,manual,sum,higher_is_better,1
+0014,Метрика 14,0,100,month,manual,sum,higher_is_better,1
+0015,Метрика 15,0,100,month,manual,sum,higher_is_better,1
+0016,Метрика 16,0,100,month,manual,sum,higher_is_better,1
+0017,Метрика 17,0,100,month,manual,sum,higher_is_better,1
+0018,Метрика 18,0,100,month,manual,sum,higher_is_better,1
+0019,Метрика 19,0,100,month,manual,sum,higher_is_better,1
+0020,Метрика 20,0,100,month,manual,sum,higher_is_better,1
