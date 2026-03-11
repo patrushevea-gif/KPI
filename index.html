@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KPI Board · Interactive Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <main class="container">
+      <header class="hero">
+        <p class="badge">KPI PLATFORM · INTERACTIVE BOARD</p>
+        <h1>Интерактивный KPI-борд для защиты проекта</h1>
+        <p class="subtitle">Выбирайте набор данных в выпадающем списке, фильтруйте отдел и двигайте сценарий месяца — все KPI и дашборды пересчитываются автоматически.</p>
+      </header>
+
+      <section class="panel control-panel">
+        <div class="control">
+          <label for="datasetSelect">Набор данных (пример)</label>
+          <select id="datasetSelect"></select>
+        </div>
+        <div class="control">
+          <label for="departmentFilter">Отдел</label>
+          <select id="departmentFilter"></select>
+        </div>
+        <div class="control">
+          <label for="scenarioRange">Сценарий месяца: <strong id="scenarioLabel">100%</strong></label>
+          <input id="scenarioRange" type="range" min="80" max="120" value="100" step="1" />
+        </div>
+        <button id="resetBtn" class="reset-btn">Сбросить</button>
+      </section>
+
+      <section class="card-grid" id="summaryCards"></section>
+
+      <section class="layout-two">
+        <article class="panel">
+          <div class="panel-head"><h2>Топ KPI сотрудников</h2><span class="hint">динамика от сценария</span></div>
+          <div id="employeeBars" class="bars"></div>
+        </article>
+        <article class="panel">
+          <div class="panel-head"><h2>KPI отделов</h2><span class="hint">кольцевые индикаторы</span></div>
+          <div id="departmentDonuts" class="donuts"></div>
+        </article>
+      </section>
+
+      <section class="layout-two">
+        <article class="panel">
+          <div class="panel-head"><h2>KPI сотрудников</h2><span class="hint">детализация</span></div>
+          <div class="table-wrap"><table><thead><tr><th>Сотрудник</th><th>Отдел</th><th>KPI ID</th><th>Факт</th><th>Статус</th></tr></thead><tbody id="employeeTable"></tbody></table></div>
+        </article>
+        <article class="panel">
+          <div class="panel-head"><h2>Отделы и верхний уровень</h2><span class="hint">управленческий срез</span></div>
+          <div class="table-wrap"><table><thead><tr><th>Уровень</th><th>Объект</th><th>KPI</th><th>Индекс</th><th>RAG</th></tr></thead><tbody id="orgTable"></tbody></table></div>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><h2>Ключевые метрики (псевдоданные)</h2><span class="hint">коды 0001–0006</span></div>
+        <div class="chips" id="metricChips"></div>
+      </section>
+    </main>
+
+    <script src="dashboard.js"></script>
+  </body>
+</html>
